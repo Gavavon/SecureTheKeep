@@ -44,7 +44,7 @@ public class GameplayInfo : MonoBehaviour
     {
         for (int i = 0; i < icons.Length; i ++) 
         {
-            if (i == num)
+            if (i != num)
             {
                 icons[i].SetActive(true);
             }

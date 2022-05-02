@@ -9,6 +9,7 @@ public class EarthBall : MonoBehaviour
     public GameObject explosion;
     public float timeBeforeDeath = 15;
     public LayerMask enemy;
+    public bool takenDamage = false;
 
     [Header("Earth Ball Effects")]
     public float earthDamageAmount = 200;

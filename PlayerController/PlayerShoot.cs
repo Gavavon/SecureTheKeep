@@ -10,34 +10,37 @@ public class PlayerShoot : MonoBehaviour
     public GameObject fireBall;
     public bool fireBallReady;
     public float fireBallResetTime;
-    private float fireBallTimer;
+    public float fireBallStartTime = 0.0f;
+    public float fireBallTimer;
     public float fireBallSpeed = 500f;
 
     [Header("IceBall Info")]
     public GameObject iceBall;
     public bool iceBallReady;
     public float iceBallResetTime;
-    private float iceBallTimer;
+    public float iceBallStartTime = 0.0f;
+    public float iceBallTimer;
     public float iceBallSpeed = 500f;
 
     [Header("VineBall Info")]
     public GameObject vineBall;
     public bool vineBallReady;
     public float vineBallResetTime;
-    private float vineBallTimer;
+    public float vineBallStartTime = 0.0f;
+    public float vineBallTimer;
     public float vineBallSpeed = 500f;
 
     [Header("EarthBall Info")]
     public GameObject earthBall;
     public bool earthBallReady;
     public float earthBallResetTime;
-    private float earthBallTimer;
+    public float earthBallStartTime = 0.0f;
+    public float earthBallTimer;
     public float earthBallSpeed = 500f;
 
     [Header("universal Info")]
     public Transform shootPoint;
     public Animator animator;
-    
 
     public static PlayerShoot instance;
     private void Awake()
@@ -45,59 +48,39 @@ public class PlayerShoot : MonoBehaviour
         instance = this;
     }
 
-	private void Update()
-	{
-        if (!fireBallReady && Time.time > fireBallTimer) 
-        {
-            fireBallReady = true;
-            fireBallTimer = Time.time + fireBallResetTime;
-        }
-        if (!iceBallReady && Time.time > iceBallTimer)
-        {
-            iceBallReady = true;
-            iceBallTimer = Time.time + iceBallResetTime;
-        }
-        if (!vineBallReady && Time.time > vineBallTimer)
-        {
-            vineBallReady = true;
-            vineBallTimer = Time.time + vineBallResetTime;
-        }
-        if (!earthBallReady && Time.time > earthBallTimer)
-        {
-            earthBallReady = true;
-            earthBallTimer = Time.time + earthBallResetTime;
-        }
-    }
-
 	public void shoot()
     {
         switch (StarterAssetsInputs.instance.currentShootType)
         {
             case StarterAssetsInputs.shootType.fire:
-                if (fireBallReady) 
+                if (Time.time > fireBallTimer)
                 {
-                    fireBallReady = false;
+                    fireBallTimer = Time.time + fireBallResetTime;
+                    fireBallStartTime = Time.time;
                     StartCoroutine(shootFireBall());
                 }
                 break;
             case StarterAssetsInputs.shootType.ice:
-                if (iceBallReady)
+                if (Time.time > iceBallTimer)
                 {
-                    iceBallReady = false;
+                    iceBallTimer = Time.time + iceBallResetTime;
+                    iceBallStartTime = Time.time;
                     StartCoroutine(shootIceBall());
                 }
                 break;
             case StarterAssetsInputs.shootType.vine:
-                if (vineBallReady)
+                if (Time.time > vineBallTimer)
                 {
-                    vineBallReady = false;
+                    vineBallTimer = Time.time + vineBallResetTime;
+                    vineBallStartTime = Time.time;
                     StartCoroutine(shootVineBall());
                 }
                 break;
             case StarterAssetsInputs.shootType.earth:
-                if (earthBallReady)
+                if (Time.time > earthBallTimer)
                 {
-                    earthBallReady = false;
+                    earthBallTimer = Time.time + earthBallResetTime;
+                    earthBallStartTime = Time.time;
                     StartCoroutine(shootEarthBall());
                 }
                 break;

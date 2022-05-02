@@ -15,6 +15,14 @@ public class GameManagement : MonoBehaviour
 	}
 	public static gameplayState currentGameState;
 
+	public enum gameDifficulty
+	{
+		easy,
+		normal,
+		hard
+	}
+	public static gameDifficulty currentGameDifficulty= gameDifficulty.normal;
+
 	public static GameManagement instance;
 	private void Awake()
 	{
@@ -38,6 +46,14 @@ public class GameManagement : MonoBehaviour
 	public gameplayState getGameState()
 	{
 		return currentGameState;
+	}
+	public void setGameDifficulty(gameDifficulty i)
+	{
+		currentGameDifficulty = i;
+	}
+	public gameDifficulty getGameDifficulty()
+	{
+		return currentGameDifficulty;
 	}
 	public void updateFPS(int rate)
 	{

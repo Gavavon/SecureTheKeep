@@ -25,8 +25,8 @@ public class EnemyActions : MonoBehaviour
     }
     public void takeDamage(float damage) 
     {
-        EnemyStats.instance.health -= damage;
-        if (EnemyStats.instance.health <= 0) 
+        gameObject.GetComponent<EnemyStats>().health -= damage;
+        if (gameObject.GetComponent<EnemyStats>().health <= 0) 
         {
             if (gameObject.GetComponent<EnemyStats>().currentEnemyState != EnemyStats.enemyState.dead)
             {

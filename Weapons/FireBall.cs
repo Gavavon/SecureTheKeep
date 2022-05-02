@@ -9,6 +9,7 @@ public class FireBall : MonoBehaviour
     public GameObject explosion;
     public float timeBeforeDeath = 15;
     public LayerMask enemy;
+    public bool takenDamage = false;
 
     [Header("Fire Ball")]
     public float fireDamageAmount = 50;

@@ -48,4 +48,16 @@ public class OptionsMenu : MonoBehaviour
     {
         GameManagement.instance.updateFPS(fps);
     }
+    public void setDifficultyEasy()
+    {
+        GameManagement.instance.setGameDifficulty(GameManagement.gameDifficulty.easy);
+    }
+    public void setDifficultyNormal()
+    {
+        GameManagement.instance.setGameDifficulty(GameManagement.gameDifficulty.normal);
+    }
+    public void setDifficultyHard()
+    {
+        GameManagement.instance.setGameDifficulty(GameManagement.gameDifficulty.hard);
+    }
 }
